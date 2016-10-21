@@ -6,7 +6,9 @@ Authors@R: person("Alexander", "Coppock", role = c("aut", "cre"),
 Description: Generates random assignments for common experimental designs and 
 	random samples for common sampling designs
 Depends:
-    R (>= 2.10.0)
+    R (>= 2.10.0),
+    Rcpp,
+    RcppArmadillo
 License: GPL-3
 LazyData: true
 Suggests:
@@ -17,3 +19,5 @@ Suggests:
     rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1	
+LinkingTo: Rcpp
+Imports: Rcpp
