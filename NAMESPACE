@@ -30,3 +30,7 @@ export(strata_rs)
 export(strata_rs_probabilities)
 importFrom(stats,r2dtable)
 importFrom(stats,rbinom)
+
+useDynLib(randomizr)
+exportPattern("^[[:alpha:]]+")
+importFrom(Rcpp,sourceCpp)

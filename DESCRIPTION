@@ -19,5 +19,6 @@ Suggests:
     rmarkdown
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1	
-LinkingTo: Rcpp
-Imports: Rcpp
+LinkingTo: Rcpp, RcppArmadillo
+Imports: Rcpp, RcppArmadillo
+Depends: RcppArmadillo

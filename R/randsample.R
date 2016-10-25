@@ -7,21 +7,27 @@
 
 library(Rcpp)
 library(RcppArmadillo)
-library(randomizr)
+#library(randomizr)
 
-Rcpp::sourceCpp('Documents/Academic/DeclareDesign/local workspace/simulator.cpp')
-Rcpp::sourceCpp('Documents/Academic/DeclareDesign/local workspace/complete_randomizer.cpp')
+Rcpp::compileAttributes()
 
+#Rcpp::sourceCpp('src/simulator.cpp')
+#random_Sample_imp<-function(N,m)
+#{.Call("randomSample", N, m, PACKAGE = "randomizr")}
 
-randomSample(10,1)
-simulator(10,1,1)
+#simulator_imp<-function(a,b,c)
+#{.Call("simulator",a,b,c,PACKAGE = "randomizr")}
+#random_Sample_imp(10,1)
+#simulator(10,1,1)
 
+set.seed()
 # C simulation
 startC <- proc.time()
 Cmatrix <- simulator(1000,100,1)
 Ctime <- proc.time() - startC
 
 #R
-complete_ra <- source('R/complete_ra.R')[[1]]
+#complete_ra <- source('R/complete_ra.R')[[1]]
 startR <- proc.time()
-complete_ra(1000,100)
+a <- complete_ra(1000,100)
+Rtime <- proc.time() - startR

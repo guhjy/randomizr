@@ -9,12 +9,12 @@
 //
 
 #include <stdio.h>
+#include <RcppArmadillo.h>
 #include <RcppArmadilloExtensions/sample.h>
 //[[Rcpp::depends(RcppArmadillo)]]
 #include <Rcpp.h>
-#include <complete_randomizer.h>
+#include "complete_randomizer.h"
 using namespace Rcpp;
-
 
 //[[Rcpp::export]]
 
@@ -22,23 +22,29 @@ using namespace Rcpp;
 
 
 
-NumericMatrix simulator (int N, int m, int t)
+Rcpp::NumericMatrix simulator (int N, int m, int t)
 {
-  NumericMatrix resC(N,t+1);
+  Rcpp::NumericMatrix resC(N,t+1);
+  
   for (int i = 0; i < t; i++)
   {
     NumericVector r = randomSample(N,m);
-   for (int j = 0; j < N; j++)
-     resC(j,i) = r[i];
+    for (int j = 0; j < N; j++)
+    {
+      resC(j,i) = r(j);
+    }
   }
+  
   //calculate the average
   for (int i = 0; i < N; i++)
   {
-    for (int j = 0; i < t; j++)
+    for (int j = 0; j < t; j++)
     {
-      resC(i,t+1)+= resC(i,j);
+      resC(i,t) = resC(i,t) + resC(i,j);
     }
-    resC(i,t+1) /= t;
+    resC(i,t) /= (double) t;
   }
+  
   return resC;
+  
 }
