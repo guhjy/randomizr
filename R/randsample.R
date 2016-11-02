@@ -20,7 +20,7 @@ Rcpp::compileAttributes()
 #random_Sample_imp(10,1)
 #simulator(10,1,1)
 
-set.seed()
+set.seed(5)
 # C simulation
 startC <- proc.time()
 Cmatrix <- simulator(1000,100,1)

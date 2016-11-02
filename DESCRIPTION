@@ -21,4 +21,3 @@ VignetteBuilder: knitr
 RoxygenNote: 5.0.1	
 LinkingTo: Rcpp, RcppArmadillo
 Imports: Rcpp, RcppArmadillo
-Depends: RcppArmadillo
